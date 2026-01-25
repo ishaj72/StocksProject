@@ -1,11 +1,15 @@
 package com.example.modules;
 
 import java.sql.Date;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import com.example.constants.Constants;
+
 
 @Entity
 @Table(name = "ONBOARD_INFO")
+@NamedQuery(name = "getOnboardInfoByUserId", query = "SELECT o FROM OnboardInfo o WHERE o.userId = :userId")
+
 public class OnboardInfo {
 
     @Id
@@ -32,9 +36,11 @@ public class OnboardInfo {
     @Column(name = "PAN_ID")
     private String panId;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "DATE_OF_BIRTH")
     private Date dateOfBirth;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "DATE_OF_INCORPORATION")
     private Date dateOfIncorporation;
 
@@ -48,11 +54,11 @@ public class OnboardInfo {
     private String ifscCode;
 
     // Getters and Setters
-    public Integer getonboardId() {
+    public Integer getOnboardId() {
         return onboardId;
     }
 
-    public void setonboardId(Integer onboardId) {
+    public void setOnboardId(Integer onboardId) {
         this.onboardId = onboardId;
     }
 

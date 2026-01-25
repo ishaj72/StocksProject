@@ -8,4 +8,5 @@ import com.example.modules.OnboardInfo;
 @Repository
 public interface IOnboardInfoRepository extends JpaRepository<OnboardInfo, String> {
 
+    OnboardInfo getOnboardInfoByUserId(String userId);
 }

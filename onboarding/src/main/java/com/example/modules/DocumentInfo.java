@@ -31,6 +31,9 @@ public class DocumentInfo {
     @Column(name = "DOCUMENT_TYPE")
     private String documentType;
 
+    @Column(name = "IS_DELETED")
+    private Boolean isDeleted;
+
     public Integer getId() {
         return id;
     }
@@ -77,6 +80,15 @@ public class DocumentInfo {
 
     public void setDocumentType(String documentType) {
         this.documentType = documentType;
+    }
+
+    
+    public Boolean getisDeleted() {
+        return isDeleted;
+    }
+
+    public void setisDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
 }
