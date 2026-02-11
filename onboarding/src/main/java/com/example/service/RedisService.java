@@ -1,9 +1,9 @@
 package com.example.service;
 
+import java.time.Duration;
+
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-
-import java.time.Duration;
 
 @Service
 public class RedisService {
@@ -14,14 +14,14 @@ public class RedisService {
         this.redisTemplate = redisTemplate;
     }
 
-   public void set(String key, Object value) {
+    public void set(String key, Object value) {
         redisTemplate.opsForValue().set(key, value);
     }
 
     // SET with TTL
     public void set(String key, Object value, long ttlSeconds) {
         redisTemplate.opsForValue()
-                     .set(key, value, Duration.ofSeconds(ttlSeconds));
+                .set(key, value, Duration.ofSeconds(ttlSeconds));
     }
 
     // GET
