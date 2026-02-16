@@ -13,7 +13,7 @@ import io.jsonwebtoken.security.Keys;
 @Configuration
 public class KeyConfig {
 
-    @Value("${JWT_SECRET}")
+    @Value("${jwt.secret}")
     private String JWT_SECRET;
 
     @Bean
