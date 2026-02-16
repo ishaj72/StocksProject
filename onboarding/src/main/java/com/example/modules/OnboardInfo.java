@@ -18,23 +18,23 @@ public class OnboardInfo {
     private Integer onboardId;
 
     @Column(name = "USER_ID")
-    private String userId;
+    private String userId;//
 
     @Column(name = "ROLE")
-    private String role;
+    private String role;//
 
     @Column(name = "ONBOARD_NAME")
     private String onboardName;
 
     @Column(name = "ONBOARD_EMAIL")
-    private String onboardEmail;
+    private String onboardEmail;//
 
     @ManyToOne
     @JoinColumn(name = "ADDRESS_FK")
     private AddressInfo address_fk;
 
     @Column(name = "PAN_ID")
-    private String panId;
+    private String panId;//
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "DATE_OF_BIRTH")
@@ -52,6 +52,7 @@ public class OnboardInfo {
 
     @Column(name = "IFSC_CODE")
     private String ifscCode;
+
 
     // Getters and Setters
     public Integer getOnboardId() {
