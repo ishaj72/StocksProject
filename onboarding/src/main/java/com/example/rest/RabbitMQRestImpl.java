@@ -10,12 +10,12 @@ import com.example.service.rabbitMQ.RabbitMQProducer;
 @RestController  
 public class RabbitMQRestImpl implements IRabbitMQRest {
 
-    @Autowired
-    private RabbitMQProducer producer;
+    // @Autowired
+    // private RabbitMQProducer producer;
 
-    @Override
-    public String sendMessage(@RequestParam String message) {
-        producer.sendMessage(message);
-        return "Message sent to RabbitMQ: " + message;
-    }
+    // @Override
+    // public String sendMessage(@RequestParam String message) {
+    //     producer.sendMessage(message);
+    //     return "Message sent to RabbitMQ: " + message;
+    // }
 }

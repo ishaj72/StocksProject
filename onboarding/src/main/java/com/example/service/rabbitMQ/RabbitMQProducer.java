@@ -8,25 +8,25 @@ import com.example.onboarding.config.RabbitMQConfig;
 
 @Service
 public class RabbitMQProducer {
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    // @Autowired
+    // private RabbitTemplate rabbitTemplate;
 
-    public void sendMessage(String message) {
-        rabbitTemplate.convertAndSend(
-            RabbitMQConfig.EXCHANGE_NAME,
-            RabbitMQConfig.ROUTING_KEY,
-            message
-        );
-        System.out.println("Message sent: " + message);
-    }
+    // public void sendMessage(String message) {
+    //     rabbitTemplate.convertAndSend(
+    //         RabbitMQConfig.EXCHANGE_NAME,
+    //         RabbitMQConfig.ROUTING_KEY,
+    //         message
+    //     );
+    //     System.out.println("Message sent: " + message);
+    // }
 
-    // For sending objects as JSON
-    public void sendObject(Object object) {
-        rabbitTemplate.convertAndSend(
-            RabbitMQConfig.EXCHANGE_NAME,
-            RabbitMQConfig.ROUTING_KEY,
-            object
-        );
-        System.out.println("Object sent: " + object);
-    }
+    // // For sending objects as JSON
+    // public void sendObject(Object object) {
+    //     rabbitTemplate.convertAndSend(
+    //         RabbitMQConfig.EXCHANGE_NAME,
+    //         RabbitMQConfig.ROUTING_KEY,
+    //         object
+    //     );
+    //     System.out.println("Object sent: " + object);
+    // }
 }

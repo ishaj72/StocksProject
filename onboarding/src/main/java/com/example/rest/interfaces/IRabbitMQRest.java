@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public interface IRabbitMQRest {
 
-     @PostMapping(path = "api/rabbitmq/send")
-     String sendMessage(@RequestParam String message);
+     // @PostMapping(path = "api/rabbitmq/send")
+     // String sendMessage(@RequestParam String message);
 }
