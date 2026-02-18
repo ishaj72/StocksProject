@@ -22,10 +22,10 @@ public class RabbitMQConfig {
     // Routing key (from producer)
     public static final String ROUTING_KEY = "notification.otp.send";
     
-    // Your queue name (you can choose any name)
+    // My queue name
     public static final String QUEUE_NAME = "otp-notification-queue";
 
-    // Declare the Topic Exchange (must match producer's exchange)
+    // Declaring the Topic Exchange 
     @Bean
     public TopicExchange exchange() {
         return new TopicExchange(EXCHANGE_NAME);
