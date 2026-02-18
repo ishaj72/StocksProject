@@ -3,8 +3,6 @@ package com.example.modules;
 import java.sql.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import com.example.constants.Constants;
-
 
 @Entity
 @Table(name = "ONBOARD_INFO")
@@ -53,6 +51,11 @@ public class OnboardInfo {
     @Column(name = "IFSC_CODE")
     private String ifscCode;
 
+
+    public OnboardInfo(String onboardName, String userId) {
+        this.onboardName = onboardName;
+        this.userId = userId;
+    }
 
     // Getters and Setters
     public Integer getOnboardId() {
@@ -149,6 +152,16 @@ public class OnboardInfo {
 
     public void setIfscCode(String ifscCode) {
         this.ifscCode = ifscCode;
+    }
+
+     public OnboardInfo() {}
+
+    @Override
+    public String toString() {
+        return "OnboardInfo{" +
+                "userId='" + userId + '\'' +
+                ", onboardName='" + onboardName + '\'' +
+                '}';
     }
 
 }
