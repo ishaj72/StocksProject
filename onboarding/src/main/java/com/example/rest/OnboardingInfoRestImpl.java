@@ -11,18 +11,14 @@ import com.example.rest.interfaces.IOnboardingInfoRest;
 import com.example.service.interfaces.IOnboardingInfoService;
 
 @RestController
-@RequestMapping("/api/v1/onboard")
-public class OnboardingInfoRestImpl
-        implements IOnboardingInfoRest {
+
+public class OnboardingInfoRestImpl implements IOnboardingInfoRest {
 
     @Autowired
     private IOnboardingInfoService onboardingInfoService;
 
     @Override
-    @PostMapping("/saveOnboardingInfo")
-    public void saveOnboardingInfo(
-            @RequestBody OnboardInfo onboardInfo) {
-
+    public void saveOnboardingInfo(OnboardInfo onboardInfo) {
         onboardingInfoService.saveOnboardingInfo(onboardInfo);
     }
 }

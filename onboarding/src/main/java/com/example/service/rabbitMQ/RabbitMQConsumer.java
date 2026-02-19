@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
+import com.example.modules.OnboardInfo;
 import com.example.modules.UserEvent;
 
 
@@ -16,25 +17,28 @@ public class RabbitMQConsumer {
     private static final Logger log = (Logger) LoggerFactory.getLogger(RabbitMQConsumer.class);
 
     @RabbitListener(queues = "otp-notification-queue")
-    public void receiveOtpNotification(UserEvent notification) {
+    public void receiveOtpNotification(OnboardInfo onboardData) {
         log.info("========================================");
-        log.info("📩 OTP Notification Received!");
-        log.info("Email: {}", notification.getEmail());
-        log.info("OTP: {}", notification.getOtp());
+        log.info("📩 Data Received!");
+        log.info("UserId: {}", onboardData.getUserId());
+        log.info("Role: {}", onboardData.getRole());
+        log.info("Onboard Email: {}", onboardData.getOnboardEmail());
+        log.info("Pan ID: {}", onboardData.getPanId());
         log.info("Received at: {}", java.time.LocalDateTime.now());
         log.info("========================================");
         
         // Process the OTP notification
-        processOtpNotification(notification);
+        processOtpNotification(onboardData);
+        
     }
     
-    private void processOtpNotification(UserEvent notification) {
+    private void processOtpNotification(OnboardInfo onboardData) {
         try {
         
-            log.info(" OTP notification processed successfully for: {}", notification.getEmail());
+            log.info(" Data processed successfully for: {}", onboardData.getOnboardEmail());
             
         } catch (Exception e) {
-            log.error("Error processing OTP notification: {}", e.getMessage());
+            log.error("Error processing data: {}", e.getMessage());
         }
     }
 }

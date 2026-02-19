@@ -17,10 +17,10 @@ public class RabbitMQConfig {
     public static final String PRODUCER_ROUTING_KEY = "user.info.send";
 
    // Exchange name (from producer)
-    public static final String EXCHANGE_NAME = "stocklist.topic";
+    public static final String EXCHANGE_NAME = "auth.topic";
     
     // Routing key (from producer)
-    public static final String ROUTING_KEY = "notification.otp.send";
+    public static final String ROUTING_KEY = "user.registered";
     
     // My queue name
     public static final String QUEUE_NAME = "otp-notification-queue";
@@ -30,7 +30,6 @@ public class RabbitMQConfig {
     public TopicExchange exchange() {
         return new TopicExchange(EXCHANGE_NAME);
     }
-
 
      @Bean
     public TopicExchange producerExchange() {
