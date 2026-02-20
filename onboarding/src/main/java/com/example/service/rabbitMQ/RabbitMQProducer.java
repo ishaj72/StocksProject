@@ -6,6 +6,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.constants.Constants;
 import com.example.modules.OnboardInfo;
 import com.example.onboarding.config.RabbitMQConfig;
 
@@ -21,10 +22,11 @@ public class RabbitMQProducer {
      */
     public void sendUserInfo(OnboardInfo onboardInfo) {
         log.info("Sending user info to RabbitMQ: {}", onboardInfo);
+
         
         rabbitTemplate.convertAndSend(
-            RabbitMQConfig.PRODUCER_EXCHANGE_NAME,
-            RabbitMQConfig.PRODUCER_ROUTING_KEY,
+            Constants.PRODUCER_EXCHANGE_NAME,
+            Constants.PRODUCER_ROUTING_KEY,
             onboardInfo
         );
         

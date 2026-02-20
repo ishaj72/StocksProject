@@ -9,37 +9,28 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.example.constants.Constants;
+
 @Configuration
 public class RabbitMQConfig {
 
-    // Your exchange and routing key for PRODUCING messages
-    public static final String PRODUCER_EXCHANGE_NAME = "user.topic";
-    public static final String PRODUCER_ROUTING_KEY = "user.info.send";
-
-   // Exchange name (from producer)
-    public static final String EXCHANGE_NAME = "auth.topic";
-    
-    // Routing key (from producer)
-    public static final String ROUTING_KEY = "user.registered";
-    
-    // My queue name
-    public static final String QUEUE_NAME = "otp-notification-queue";
+   
 
     // Declaring the Topic Exchange 
     @Bean
     public TopicExchange exchange() {
-        return new TopicExchange(EXCHANGE_NAME);
+        return new TopicExchange(Constants.EXCHANGE_NAME);
     }
 
      @Bean
     public TopicExchange producerExchange() {
-        return new TopicExchange(PRODUCER_EXCHANGE_NAME);
+        return new TopicExchange(Constants.PRODUCER_EXCHANGE_NAME);
     }
 
     // Declare your Queue
     @Bean
     public Queue queue() {
-        return new Queue(QUEUE_NAME, true); // durable = true
+        return new Queue(Constants.QUEUE_NAME, true); // durable = true
     }
 
     // Bind Queue to Exchange with Routing Key
@@ -48,7 +39,7 @@ public class RabbitMQConfig {
         return BindingBuilder
                 .bind(queue)
                 .to(exchange)
-                .with(ROUTING_KEY);
+                .with(Constants.ROUTING_KEY);
     }
 
     // JSON Message Converter
@@ -56,5 +47,7 @@ public class RabbitMQConfig {
     public MessageConverter jsonMessageConverter() {
         return new Jackson2JsonMessageConverter();
     }
+
+    
 
 }
