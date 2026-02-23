@@ -17,28 +17,14 @@ public class RabbitMQProducer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    /**
-     * Send OnboardInfo (onboardName and userId) as JSON to RabbitMQ
-     */
-    public void sendUserInfo(OnboardInfo onboardInfo) {
-        log.info("Sending user info to RabbitMQ: {}", onboardInfo);
+     public <T> void sendMessage(String exchange, String routingKey, T message) {
 
-        
-        rabbitTemplate.convertAndSend(
-            Constants.PRODUCER_EXCHANGE_NAME,
-            Constants.PRODUCER_ROUTING_KEY,
-            onboardInfo
-        );
-        
-        log.info("✅ User info sent successfully: onboardName={}, userId={}", 
-                 onboardInfo.getOnboardName(), onboardInfo.getUserId());
+        log.info("Sending message to exchange={}, routingKey={}, payload={}",
+                 exchange, routingKey, message);
+
+        rabbitTemplate.convertAndSend(exchange, routingKey, message);
+
+        log.info("✅ Message sent successfully");
     }
 
-    /**
-     * Convenience method to send onboardName and userId directly
-     */
-    public void sendUserInfo(String onboardName, String userId) {
-        OnboardInfo onboardInfo = new OnboardInfo(onboardName, userId);
-        sendUserInfo(onboardInfo);
-    }
 }

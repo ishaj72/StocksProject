@@ -13,10 +13,4 @@ public interface IRabbitMQRest {
 
       @PostMapping("/send/user")
     ResponseEntity<String> sendUserInfo(@RequestBody OnboardInfo onboardInfo);
-
-    @PostMapping("/send")
-    ResponseEntity<String> sendUserInfoParams(
-        @RequestParam String onboardName, 
-        @RequestParam String userId
-    );
 }

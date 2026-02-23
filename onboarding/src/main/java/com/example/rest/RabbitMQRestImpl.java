@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.constants.Constants;
 import com.example.modules.OnboardInfo;
 import com.example.rest.interfaces.IRabbitMQRest;
 import com.example.service.rabbitMQ.RabbitMQProducer;
@@ -19,35 +20,20 @@ public class RabbitMQRestImpl implements IRabbitMQRest {
 
     private static final Logger log = LoggerFactory.getLogger(RabbitMQRestImpl.class);
 
-    @Autowired
+     @Autowired
     private RabbitMQProducer rabbitMQProducer;
 
     @Override
-    public ResponseEntity<String> sendUserInfo(@RequestBody OnboardInfo onboardInfo) {
-        log.info("Received request to send user info: {}", onboardInfo);
-        
-        try {
-            rabbitMQProducer.sendUserInfo(onboardInfo);
-            return ResponseEntity.ok("User info sent successfully to RabbitMQ");
-        } catch (Exception e) {
-            log.error("Error sending user info: {}", e.getMessage());
-            return ResponseEntity.status(500).body("Failed to send user info");
-        }
-    }
+    public ResponseEntity<String> sendUserInfo(OnboardInfo onboardInfo) {
 
-    @Override
-    public ResponseEntity<String> sendUserInfoParams(
-            @RequestParam String onboardName, 
-            @RequestParam String userId) {
-        
-        log.info("Received request to send user: onboardName={}, userId={}", onboardName, userId);
-        
-        try {
-            rabbitMQProducer.sendUserInfo(onboardName, userId);
-            return ResponseEntity.ok("User info sent successfully to RabbitMQ");
-        } catch (Exception e) {
-            log.error("Error sending user info: {}", e.getMessage());
-            return ResponseEntity.status(500).body("Failed to send user info");
-        }
+        log.info("Received request: {}", onboardInfo);
+
+        rabbitMQProducer.sendMessage(
+            Constants.PRODUCER_EXCHANGE_NAME,
+            Constants.PRODUCER_ROUTING_KEY,
+            onboardInfo
+        );
+
+        return ResponseEntity.ok("User info sent successfully");
     }
 }

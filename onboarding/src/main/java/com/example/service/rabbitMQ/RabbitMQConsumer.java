@@ -3,9 +3,12 @@ package com.example.service.rabbitMQ;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.modules.OnboardInfo;
 
+import com.example.dao.interfaces.IOnboardInfoDao;
+import com.example.modules.OnboardInfo;
+import com.example.service.interfaces.IOnboardingInfoService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,6 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RabbitMQConsumer {
     private static final Logger log = (Logger) LoggerFactory.getLogger(RabbitMQConsumer.class);
+
+    @Autowired
+    private IOnboardingInfoService onboardingInfoService;
 
     @RabbitListener(queues = "otp-notification-queue")
     public void receiveOtpNotification(OnboardInfo onboardData) {
@@ -27,7 +33,9 @@ public class RabbitMQConsumer {
         
         // Process the OTP notification
         processOtpNotification(onboardData);
-        
+        log.info("-------data saving in process------");
+        onboardingInfoService.saveOnboardingInfo(onboardData);
+        log.info("----data saved---------");
     }
     
     private void processOtpNotification(OnboardInfo onboardData) {

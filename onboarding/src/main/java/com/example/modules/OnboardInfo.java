@@ -27,7 +27,7 @@ public class OnboardInfo {
     @Column(name = "ONBOARD_EMAIL")
     private String onboardEmail;//
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL) 
     @JoinColumn(name = "ADDRESS_FK")
     private AddressInfo address_fk;
 
