@@ -13,26 +13,26 @@ public class OnboardInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ONBOARD_ID")
-    private Integer onboardId;
+    private Integer onboardId; // primary key for the table
 
-    @Column(name = "USER_ID")
-    private String userId;//
+    @Column(name = "USER_ID",unique = true,nullable = false)
+    private String userId; // unique id for each
 
-    @Column(name = "ROLE")
-    private String role;//
+    @Column(name = "ROLE" , nullable = false)
+    private String role; // investor-o-buyer or lisiting you company on the app
 
-    @Column(name = "ONBOARD_NAME")
-    private String onboardName;
+    @Column(name = "ONBOARD_NAME" , unique = true , nullable = false)
+    private String onboardName; // user name that user chooses
 
-    @Column(name = "ONBOARD_EMAIL")
-    private String onboardEmail;//
+    @Column(name = "ONBOARD_EMAIL",nullable = false)
+    private String onboardEmail;
 
     @OneToOne(cascade = CascadeType.ALL) 
     @JoinColumn(name = "ADDRESS_FK")
     private AddressInfo address_fk;
 
-    @Column(name = "PAN_ID")
-    private String panId;//
+    @Column(name = "PAN_ID" , nullable = false)
+    private String panId;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "DATE_OF_BIRTH")
@@ -40,15 +40,15 @@ public class OnboardInfo {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "DATE_OF_INCORPORATION")
-    private Date dateOfIncorporation;
+    private Date dateOfIncorporation; // the dat company was approved by government
 
     @Column(name = "ACCOUNT_HOLDER_NAME")
-    private String accountHolderName;
+    private String accountHolderName; // users actual name
 
-    @Column(name = "ACCOUNT_NUMBER")
+    @Column(name = "ACCOUNT_NUMBER" ,nullable = false)
     private String accountNumber;
 
-    @Column(name = "IFSC_CODE")
+    @Column(name = "IFSC_CODE" ,nullable = false )
     private String ifscCode;
 
 
