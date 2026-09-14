@@ -27,7 +27,7 @@ public class AddressInfo {
     private String countryCode;
 
     @Column(name = "CONTACT_NUMBER")
-    private Integer contactNumber;
+    private String contactNumber;
 
     public Integer getId() {
         return id;
@@ -77,11 +77,11 @@ public class AddressInfo {
         this.countryCode = countryCode;
     }
 
-    public Integer getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(Integer contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 

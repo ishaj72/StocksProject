@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "ONBOARD_INFO")
 @NamedQuery(name = "getOnboardInfoByUserId", query = "SELECT o FROM OnboardInfo o WHERE o.userId = :userId")
+@NamedQuery(name = "getOnboardList", query = "SELECT o FROM OnboardInfo o")
 
 public class OnboardInfo {
 

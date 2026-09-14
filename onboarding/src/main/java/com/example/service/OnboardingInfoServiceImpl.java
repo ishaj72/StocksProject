@@ -1,4 +1,5 @@
 package com.example.service;
+import org.apache.tomcat.util.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import com.example.service.interfaces.IOnboardingInfoService;
 
 import jakarta.persistence.EntityManager;
 
+import java.util.List;
 
 
 @Service
@@ -51,6 +53,18 @@ public class OnboardingInfoServiceImpl implements IOnboardingInfoService {
         catch(Exception ex){
             log.error("Error occurred inside @method saveOnboardingInfo :{}",ex.getMessage());
             throw new RuntimeException(Constants.SOMETHING_WENT_WRONG);
+        }
+    }
+
+    @Override
+    public List<OnboardInfo> getOnboardList(){
+        log.info("Inside @Class OnboardingInfoServiceImpl @Method getOnboardList");
+        try{
+            return onboardInfoDao.getOnboardList();
+        }
+        catch (Exception ex){
+            log.error("Error occurred inside @method getOnboardList : {}", ExceptionUtils.unwrapInvocationTargetException(ex));
+            throw new RuntimeException(ex.getMessage());
         }
     }
 }
