@@ -9,4 +9,6 @@ public interface IOnboardingInfoService {
     void saveOnboardingInfo(OnboardInfo onboardInfo);
 
     List<OnboardInfo> getOnboardList();
+
+    OnboardInfo getOnboardByUserId(String UserId);
 }

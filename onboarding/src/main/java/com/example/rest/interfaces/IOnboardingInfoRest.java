@@ -15,4 +15,7 @@ public interface IOnboardingInfoRest{
 
     @GetMapping("/getOnboardList")
     List<OnboardInfo> getOnboardList();
+
+    @GetMapping("/getOnboardByUserId")
+    OnboardInfo getOnboardByUserId(@RequestParam String userId);
 }

@@ -31,5 +31,11 @@ public class OnboardingInfoRestImpl implements IOnboardingInfoRest {
         log.info("Inside @Class OnboardingInfoRestImpl @method getOnboardList");
         return onboardingInfoService.getOnboardList();
     }
+
+    @Override
+    public OnboardInfo getOnboardByUserId(String userId){
+        log.info("Inside @Class OnboardInfoRestImpl @Method getOnboardByUserId for userId : {}",userId);
+        return onboardingInfoService.getOnboardByUserId(userId);
+    }
 }
 

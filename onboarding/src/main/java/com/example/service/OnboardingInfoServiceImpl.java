@@ -67,5 +67,17 @@ public class OnboardingInfoServiceImpl implements IOnboardingInfoService {
             throw new RuntimeException(ex.getMessage());
         }
     }
+
+    @Override
+    public OnboardInfo getOnboardByUserId(String userId){
+        log.info("Inside @Class OnboardingInfoServiceImpl @Method getOnboardByUserId for userId :{}",userId);
+        try{
+            return onboardInfoDao.getOnboardInfoByUserId(userId);
+        }
+        catch (Exception ex){
+            log.error("Error occurred inside @Method getOnboardInfoByUseId : {}", (Object) ex.getStackTrace());
+            throw new RuntimeException(ex.getMessage());
+        }
+    }
 }
     
