@@ -28,10 +28,6 @@ public class OnboardInfo {
     @Column(name = "ONBOARD_EMAIL",nullable = false)
     private String onboardEmail;
 
-    @OneToOne(cascade = CascadeType.ALL) 
-    @JoinColumn(name = "ADDRESS_FK")
-    private AddressInfo address_fk;
-
     @Column(name = "PAN_ID" , nullable = false)
     private String panId;
 
@@ -97,14 +93,6 @@ public class OnboardInfo {
 
     public void setOnboardEmail(String onboardEmail) {
         this.onboardEmail = onboardEmail;
-    }
-
-    public AddressInfo getAddress_fk() {
-        return address_fk;
-    }
-
-    public void setAddress_fk(AddressInfo address_fk) {
-        this.address_fk = address_fk;
     }
 
     public String getPanId() {

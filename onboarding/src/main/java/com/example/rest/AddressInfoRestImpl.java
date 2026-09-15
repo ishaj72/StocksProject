@@ -1,5 +1,7 @@
 package com.example.rest;
 
+import com.example.modules.AddressInfo;
+import com.example.service.interfaces.IAddressInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +17,11 @@ public class AddressInfoRestImpl implements IAddressInfoRest{
     private static final Logger log = LoggerFactory.getLogger(AddressInfoRestImpl.class);
 
     @Autowired
-    IOnboardInfoDao onboardInfoDao;
+    IAddressInfoService addressInfoService;
 
     @Override
-    public void saveAddressInfo(String userId){
+    public String saveAddressInfo(AddressInfo addressInfo) {
         log.info("Inside @Class AddressInfoRestImpl @method saveAddressInfo");
-        OnboardInfo onboard = onboardInfoDao.getOnboardInfoByUserId(userId);
-        log.info("onboard info for address pk :{}",onboard);
-        Integer addressId = onboard.getAddress_fk().getId();
-        
+        return addressInfoService.saveAddressInfo(addressInfo);
     }
 }

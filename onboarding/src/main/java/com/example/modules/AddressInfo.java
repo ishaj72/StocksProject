@@ -2,6 +2,9 @@ package com.example.modules;
 
 import jakarta.persistence.*;
 
+
+@NamedQuery(name="getAddressInfoByUserId",query="SELECT a FROM AddressInfo a where a.userId=:userId")
+
 @Entity
 @Table(name = "ADDRESS_INFO")
 public class AddressInfo {
@@ -28,6 +31,9 @@ public class AddressInfo {
 
     @Column(name = "CONTACT_NUMBER")
     private String contactNumber;
+
+    @Column(name = "USER_ID")
+    private String userId;
 
     public Integer getId() {
         return id;
@@ -83,6 +89,14 @@ public class AddressInfo {
 
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
 }

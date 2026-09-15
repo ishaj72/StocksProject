@@ -5,6 +5,10 @@ public class Constants {
     /*Named Query */
     public static final String GET_ONBOARD_INFO_BY_USER_ID = "getOnboardInfoByUserId";
     public static final String GET_ONBOARD_LIST = "getOnboardList";
+    public static final String GET_ADDRESS_INFO_BY_USER_ID= "getAddressInfoByUserId";
+
+    public static final String DATA_SAVED_SUCCESSFULLY = "Data saved successful. ";
+    public static final String DATA_NOT_SAVED = "Data is not saved. Some error Occurred";
 
     /*Error message constants */
     public static final String SOMETHING_WENT_WRONG = "Something went wrong.";
