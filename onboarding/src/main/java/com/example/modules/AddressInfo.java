@@ -2,8 +2,10 @@ package com.example.modules;
 
 import jakarta.persistence.*;
 
+import static com.example.constants.Constants.GET_ADDRESS_INFO_BY_USER_ID;
 
-@NamedQuery(name="getAddressInfoByUserId",query="SELECT a FROM AddressInfo a where a.userId=:userId")
+
+@NamedQuery(name=GET_ADDRESS_INFO_BY_USER_ID,query="SELECT a FROM AddressInfo a where a.userId=:userId")
 
 @Entity
 @Table(name = "ADDRESS_INFO")

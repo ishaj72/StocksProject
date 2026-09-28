@@ -24,4 +24,10 @@ public class AddressInfoRestImpl implements IAddressInfoRest{
         log.info("Inside @Class AddressInfoRestImpl @method saveAddressInfo");
         return addressInfoService.saveAddressInfo(addressInfo);
     }
+
+    @Override
+    public String deleteAddressByUserId(String userId){
+        log.info("Inside @Class AddressInfoDaoImpl @Method deleteAddressInfoImpl for userId: {}", userId);
+        return addressInfoService.deleteAddressByUserId(userId);
+    }
 }

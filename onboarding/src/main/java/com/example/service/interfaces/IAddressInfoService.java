@@ -6,4 +6,6 @@ import com.example.modules.OnboardInfo;
 public interface IAddressInfoService {
 
     String saveAddressInfo(AddressInfo addressInfo);
+
+    String deleteAddressByUserId(String userId);
 }
