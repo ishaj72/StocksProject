@@ -9,6 +9,7 @@ public class Constants {
 
     /* Return message constants*/
     public static final String DATA_SAVED_SUCCESSFULLY = "Data saved successful. ";
+    public static final String EXISITNG_DATA_UPDATED = "Data has been succesfully updates";
     public static final String DATA_NOT_SAVED = "Data is not saved. Some error Occurred";
     public static final String DATA_DELETED_SUCCESSFULLY = "Data has been deleted successfully";
     public static final String DATA_NOT_DELETED = "Data is not deleted";

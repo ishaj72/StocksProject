@@ -36,8 +36,13 @@ public class AddressInfoDaoImpl implements IAddressInfoDao{
     public String saveAddressInfo(AddressInfo addressInfo){
         log.info("Inside @Class AddressInfoDaoImpl @Method saveAddressInfo");
         try{
-            entityManager.persist(addressInfo);
-            return DATA_SAVED_SUCCESSFULLY;
+            AddressInfo info = getAddressInfoByUserId(addressInfo.getUserId());
+            if(Objects.isNull(info)) {
+                entityManager.persist(addressInfo);
+                return DATA_SAVED_SUCCESSFULLY;
+            };
+            entityManager.merge(info);
+            return EXISITNG_DATA_UPDATED;
         }
         catch (Exception ex){
             log.error("Error occurred inside @Method saveAddressInfo : {}", ex);
