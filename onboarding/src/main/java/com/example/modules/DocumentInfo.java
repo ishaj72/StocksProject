@@ -1,14 +1,24 @@
 package com.example.modules;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
+import com.example.enums.DocumentType;
+import com.example.enums.VerificationStatus;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "DOCUMENT_INFO")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class DocumentInfo {
 
     @Id
@@ -16,79 +26,25 @@ public class DocumentInfo {
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name = "CATEGORY")
-    private String category;
+    @Column(name = "USER_ID")
+    private String userId;
 
-    @Column(name = "DOCUMENT_ID")
-    private String documentId;
+    @Column(name = "ROLE")
+    private String role;
 
-    @Column(name = "DOCUMENT_URL")
-    private String documentUrl;
+    @Column(name = "DOCUMENT_TYPE")
+    private DocumentType documentType;
 
     @Column(name = "DOCUMENT_NAME")
     private String documentName;
 
-    @Column(name = "DOCUMENT_TYPE")
-    private String documentType;
+    @Column(name = "DOCUMENT_URL")
+    private String DocumentUrl;
 
-    @Column(name = "IS_DELETED")
-    private Boolean isDeleted;
+    @Column(name = "VERIFICATION_STATUS")
+    private VerificationStatus verificationStatus;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getDocumentId() {
-        return documentId;
-    }
-
-    public void setDocumentId(String documentId) {
-        this.documentId = documentId;
-    }
-
-    public String getDocumentUrl() {
-        return documentUrl;
-    }
-
-    public void setDocumentUrl(String documentUrl) {
-        this.documentUrl = documentUrl;
-    }
-
-    public String getDocumentName() {
-        return documentName;
-    }
-
-    public void setDocumentName(String documentName) {
-        this.documentName = documentName;
-    }
-
-    public String getDocumentType() {
-        return documentType;
-    }
-
-    public void setDocumentType(String documentType) {
-        this.documentType = documentType;
-    }
-
-    
-    public Boolean getisDeleted() {
-        return isDeleted;
-    }
-
-    public void setisDeleted(Boolean isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
+    @CreationTimestamp
+    @Column(name = "UPLOAD_TIME", nullable = false, updatable = false)
+    private LocalDateTime uploadTime;
 }

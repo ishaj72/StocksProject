@@ -3,12 +3,13 @@ package com.example.modules;
 import java.sql.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "ONBOARD_INFO")
+@AllArgsConstructor
 @NamedQuery(name = "getOnboardInfoByUserId", query = "SELECT o FROM OnboardInfo o WHERE o.userId = :userId")
 @NamedQuery(name = "getOnboardList", query = "SELECT o FROM OnboardInfo o")
-
 public class OnboardInfo {
 
     @Id
@@ -28,8 +29,8 @@ public class OnboardInfo {
     @Column(name = "ONBOARD_EMAIL",nullable = false)
     private String onboardEmail;
 
-    @Column(name = "PAN_ID" , nullable = false)
-    private String panId;
+//    @Column(name = "PAN_ID" , nullable = false)
+//    private String panId;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "DATE_OF_BIRTH")
@@ -95,13 +96,13 @@ public class OnboardInfo {
         this.onboardEmail = onboardEmail;
     }
 
-    public String getPanId() {
-        return panId;
-    }
-
-    public void setPanId(String panId) {
-        this.panId = panId;
-    }
+//    public String getPanId() {
+//        return panId;
+//    }
+//
+//    public void setPanId(String panId) {
+//        this.panId = panId;
+//    }
 
     public Date getDateOfBirth() {
         return dateOfBirth;

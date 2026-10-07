@@ -1,6 +1,8 @@
 package com.example.modules;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import static com.example.constants.Constants.GET_ADDRESS_INFO_BY_USER_ID;
 
@@ -9,6 +11,8 @@ import static com.example.constants.Constants.GET_ADDRESS_INFO_BY_USER_ID;
 
 @Entity
 @Table(name = "ADDRESS_INFO")
+@AllArgsConstructor
+@NoArgsConstructor
 public class AddressInfo {
 
     @Id
