@@ -8,8 +8,8 @@ import lombok.AllArgsConstructor;
 @Entity
 @Table(name = "ONBOARD_INFO")
 @AllArgsConstructor
-@NamedQuery(name = "getOnboardInfoByUserId", query = "SELECT o FROM OnboardInfo o WHERE o.userId = :userId")
-@NamedQuery(name = "getOnboardList", query = "SELECT o FROM OnboardInfo o")
+@NamedQuery(name = "GET_ONBOARD_INFO_BY_USER_ID", query = "SELECT o FROM OnboardInfo o WHERE o.userId = :userId")
+@NamedQuery(name = "GET_ONBOARD_LIST", query = "SELECT o FROM OnboardInfo o")
 public class OnboardInfo {
 
     @Id

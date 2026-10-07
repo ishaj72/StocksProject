@@ -11,7 +11,13 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+
+import static com.example.constants.Constants.GET_DOCUMENT_INFO_BY_USER_ID;
+import static com.example.constants.Constants.GET_DOCUMENT_INFO_BY_USER_ID_AND_DOCUMENT_TYPE;
+
+
+@NamedQuery(name = GET_DOCUMENT_INFO_BY_USER_ID, query = "SELECT do FROM DocumentInfo do WHERE do.userId = :userId")
+@NamedQuery(name = GET_DOCUMENT_INFO_BY_USER_ID_AND_DOCUMENT_TYPE,query = "SELECT do FROM DocumentInfo do WHERE do.userId = :userId AND do.documentType= :documentType")
 
 @Entity
 @Table(name = "DOCUMENT_INFO")

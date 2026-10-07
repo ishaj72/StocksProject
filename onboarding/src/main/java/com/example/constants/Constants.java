@@ -6,6 +6,8 @@ public class Constants {
     public static final String GET_ONBOARD_INFO_BY_USER_ID = "getOnboardInfoByUserId";
     public static final String GET_ONBOARD_LIST = "getOnboardList";
     public static final String GET_ADDRESS_INFO_BY_USER_ID= "getAddressInfoByUserId";
+    public static final String GET_DOCUMENT_INFO_BY_USER_ID = "getDocumentInfoByUserId";
+    public static final String GET_DOCUMENT_INFO_BY_USER_ID_AND_DOCUMENT_TYPE="getDocumentInfoByUserIdAndDocumentType";
 
     /* Return message constants*/
     public static final String DATA_SAVED_SUCCESSFULLY = "Data saved successful. ";
@@ -13,6 +15,7 @@ public class Constants {
     public static final String DATA_NOT_SAVED = "Data is not saved. Some error Occurred";
     public static final String DATA_DELETED_SUCCESSFULLY = "Data has been deleted successfully";
     public static final String DATA_NOT_DELETED = "Data is not deleted";
+    public static final String DATA_EXISTS = "Data already exists for id. ";
 
     /*Error message constants */
     public static final String SOMETHING_WENT_WRONG = "Something went wrong.";
